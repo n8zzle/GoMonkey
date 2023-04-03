@@ -1,5 +1,5 @@
 import "./globals.css";
-import NavBar from "./NavBar.tsx";
+import SideBar from "./SideBar";
 import Task from "./Task";
 
 export const metadata = {
@@ -16,7 +16,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <div className="flex flex-col md:flex-row w-screen  h-screen bg-gray-200">
-          <NavBar />
+          <SideBar />
           {children}
           <Task />
         </div>
