@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
-import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import KeyboardArrowLeftIcon from "@mui/icons-material/KeyboardArrowLeft";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 import AccessTimeIcon from "@mui/icons-material/AccessTime";
 import TaskAltIcon from "@mui/icons-material/TaskAlt";
 import QueryStatsIcon from "@mui/icons-material/QueryStats";
@@ -20,11 +21,11 @@ export default function SideBar() {
     <div
       className={`${
         open
-          ? "w-full md:w-80 flex flex-col items-center p-5 justify-between"
+          ? "w-full md:w-80 flex flex-col items-center p-5  justify-between"
           : "w-full md:w-28 flex flex-col items-center p-5 justify-between"
       } duration-500 bg-white`}
     >
-      <div className="flex items-center">
+      <div className="flex flex-col items-center">
         <Link href="/" className="text-lg font-bold">
           <Image src="/logo.png" width={64} height={64} alt="logo" />
         </Link>
@@ -39,7 +40,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <AccessTimeIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Pomodoro</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Pomodoro
+          </button>
         </Link>
 
         <Link
@@ -47,7 +50,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <TaskAltIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Tasks</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Tasks
+          </button>
         </Link>
 
         <Link
@@ -55,7 +60,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <QueryStatsIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Stats</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Stats
+          </button>
         </Link>
 
         <Link
@@ -63,7 +70,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <CalendarMonthIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Calendar</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Calendar
+          </button>
         </Link>
 
         <Link
@@ -71,7 +80,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <ContactsIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Contacts</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Contacts
+          </button>
         </Link>
 
         <Link
@@ -79,7 +90,9 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <SettingsIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Settings</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Settings
+          </button>
         </Link>
 
         <Link
@@ -87,7 +100,7 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <HelpIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Help</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>Help</button>
         </Link>
 
         <Link
@@ -95,13 +108,18 @@ export default function SideBar() {
           className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
         >
           <LogoutIcon />
-          <a className={`${open ? "inline-flex" : "hidden"}`}>Log out</a>
+          <button className={`${open ? "inline-flex" : "hidden"}`}>
+            Log out
+          </button>
         </Link>
       </div>
 
       <div>
-        <IconButton onClick={() => setOpen(!open)} className="hidden md:flex">
-          <ArrowBackIosIcon />
+        <IconButton
+          onClick={() => setOpen(!open)}
+          className="hidden md:flex  duration-300"
+        >
+          {open ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}
         </IconButton>
       </div>
     </div>
