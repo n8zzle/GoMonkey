@@ -25,7 +25,7 @@ export default function Task() {
             onClick={() => setOpen(!open)}
             className="hidden md:flex  duration-300"
           >
-            {open ? <KeyboardArrowLeftIcon /> : <KeyboardArrowRightIcon />}
+            {open ? <KeyboardArrowRightIcon /> : <KeyboardArrowLeftIcon />}
           </IconButton>
         </div>
       </div>

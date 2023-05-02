@@ -115,12 +115,10 @@ export default function SideBar() {
           <Link
             href="/"
             className="hover:bg-[#F36969] hover:text-white duration-300 rounded-full  flex justify-center text-center p-2 space-x-2"
+            onClick={signout}
           >
             <LogoutIcon />
-            <button
-              className={`${open ? "inline-flex" : "hidden"}`}
-              onClick={signout}
-            >
+            <button className={`${open ? "inline-flex" : "hidden"}`}>
               Log out
             </button>
           </Link>

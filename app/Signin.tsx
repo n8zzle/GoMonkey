@@ -46,53 +46,65 @@ const Signin = (props: Props) => {
       });
   };
   const [password, showPassword] = useState(false);
-
+  const [modal, showModal] = useState(false);
   return (
     <div className="w-full h-full  flex">
       <div className="w-full flex justify-center items-center bg-gradient-to-r from-orange-300 to-yellow-200 ...">
         Image Here
       </div>
       <div className="w-full flex flex-col  space-y-5 justify-center items-center">
-        <h1 className="flex text-6xl font-extrabold ">Sign up</h1>
-
-        <TextField
-          className="w-1/2"
-          label="E-mail"
-          id="emailAddress"
-          variant="outlined"
-        />
-        {password ? (
-          <TextField
-            className="w-1/2"
-            label="Password"
-            id="userpassword"
-            variant="outlined"
-          />
+        {modal ? (
+          <Popup />
         ) : (
-          <TextField
-            className="w-1/2"
-            label="Password"
-            id="userpassword"
-            variant="outlined"
-            type="password"
-          />
+          <>
+            <h1 className="flex text-6xl font-extrabold ">Register now</h1>
+
+            <TextField
+              className="w-1/2"
+              label="E-mail"
+              id="emailAddress"
+              variant="outlined"
+            />
+            {password ? (
+              <TextField
+                className="w-1/2"
+                label="Password"
+                id="userpassword"
+                variant="outlined"
+              />
+            ) : (
+              <TextField
+                className="w-1/2"
+                label="Password"
+                id="userpassword"
+                variant="outlined"
+                type="password"
+              />
+            )}
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  id="checkbox"
+                  onClick={() => showPassword(!password)}
+                />
+              }
+              label="Show password"
+            />
+
+            <Button
+              onClick={signInWithCredentials}
+              className="w-1/2 p-3 bg-gradient-to-r from-orange-300 to-yellow-200 text-black font-bold shadow-md"
+            >
+              Register now
+            </Button>
+          </>
         )}
 
-        <FormControlLabel
-          control={
-            <Checkbox id="checkbox" onClick={() => showPassword(!password)} />
-          }
-          label="Show password"
-        />
-
         <Button
-          onClick={signInWithCredentials}
-          className="w-1/2 p-3 bg-gradient-to-r from-orange-300 to-yellow-200 text-black font-bold shadow-md"
+          className="flex justify-end items-center"
+          onClick={() => showModal(!modal)}
         >
-          Sign up
-        </Button>
-
-        <Button className="flex justify-end items-center">
           Already have an account ?
         </Button>
 
