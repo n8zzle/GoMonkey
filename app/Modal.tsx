@@ -1,7 +1,17 @@
 import { Button, Checkbox, FormControlLabel, TextField } from "@mui/material";
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import React, { useState } from "react";
 
-const Popup = () => {
+const signInWithCredentials = () => {
+  const email = document.getElementById("emailAddress").value;
+  const password = document.getElementById("userpassword").value;
+  //console.log(email);
+  //console.log(password);
+  const auth = getAuth();
+  signInWithEmailAndPassword(auth, email, password);
+};
+
+const Modal = () => {
   const [password, showPassword] = useState(false);
 
   return (
@@ -38,11 +48,14 @@ const Popup = () => {
         label="Show password"
       />
 
-      <Button className="w-1/2 p-3 bg-gradient-to-r from-orange-300 to-yellow-200 text-black font-bold shadow-md">
+      <Button
+        onClick={signInWithCredentials}
+        className="w-1/2 p-3 bg-gradient-to-r from-orange-300 to-yellow-200 text-black font-bold shadow-md"
+      >
         Sign in
       </Button>
     </div>
   );
 };
 
-export default Popup;
+export default Modal;

@@ -34,11 +34,13 @@ export default function SideBar() {
       >
         <div className="flex flex-col items-center">
           <Link href="/" className="text-lg font-bold">
-            <Image src="/logo.png" width={64} height={64} alt="logo" />
+            {open ? (
+              <Image src="/logo.png" width={100} height={100} alt="logo" />
+            ) : (
+              <Image src="/logo.png" width={64} height={64} alt="logo" />
+            )}
           </Link>
-          <h1 className={`${open ? "inline-flex" : "hidden"}`}>
-            {user.displayName}
-          </h1>
+          <h1 className={`${open ? "inline-flex" : "hidden"}`}>{user.email}</h1>
         </div>
 
         <div className="flex flex-col w-full items-center space-y-5">

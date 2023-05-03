@@ -9,7 +9,7 @@ export default function Home() {
   if (user) {
     return (
       <div className="w-full flex bg-gray-200 p-10 justify-center">
-        Getting Started, {user?.displayName}
+        Getting Started, {user.email}
       </div>
     );
   } else {
