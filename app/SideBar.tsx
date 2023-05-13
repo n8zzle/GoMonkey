@@ -10,7 +10,7 @@ import ContactsIcon from "@mui/icons-material/Contacts";
 import SettingsIcon from "@mui/icons-material/Settings";
 import HelpIcon from "@mui/icons-material/Help";
 import LogoutIcon from "@mui/icons-material/Logout";
-import { IconButton } from "@mui/material";
+import { Avatar, IconButton } from "@mui/material";
 import { useState } from "react";
 import Image from "next/image";
 import { signOut } from "firebase/auth";
@@ -23,6 +23,38 @@ export default function SideBar() {
     signOut(auth);
   };
   const [user, loading, error] = useAuthState(auth);
+
+  const checkPhotoUrl = (open) => {
+    if (!user?.photoURL) {
+      if (!open) {
+        return <Avatar sx={{ width: 64, height: 64 }}>{user.email[0]}</Avatar>;
+      } else {
+        return (
+          <Avatar sx={{ width: 100, height: 100 }}>{user.email[0]}</Avatar>
+        );
+      }
+    } else if (!open) {
+      return (
+        <Image
+          src={`${user.photoURL}`}
+          width={64}
+          height={64}
+          alt="logo"
+          className="rounded-full"
+        />
+      );
+    } else {
+      return (
+        <Image
+          src={`${user.photoURL}`}
+          width={100}
+          height={100}
+          alt="logo"
+          className="rounded-full"
+        />
+      );
+    }
+  };
   if (user) {
     return (
       <div
@@ -34,11 +66,7 @@ export default function SideBar() {
       >
         <div className="flex flex-col items-center">
           <Link href="/" className="text-lg font-bold">
-            {open ? (
-              <Image src="/logo.png" width={100} height={100} alt="logo" />
-            ) : (
-              <Image src="/logo.png" width={64} height={64} alt="logo" />
-            )}
+            {open ? checkPhotoUrl(open) : checkPhotoUrl(open)}
           </Link>
           <h1 className={`${open ? "inline-flex" : "hidden"}`}>{user.email}</h1>
         </div>

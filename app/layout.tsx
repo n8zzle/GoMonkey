@@ -1,6 +1,5 @@
 import "./globals.css";
 import SideBar from "./SideBar";
-import Task from "./Task";
 
 export const metadata = {
   title: "Pomodoro App",
@@ -18,7 +17,6 @@ export default function RootLayout({
         <div className="flex flex-col md:flex-row w-screen  h-screen">
           <SideBar />
           {children}
-          <Task />
         </div>
       </body>
     </html>
