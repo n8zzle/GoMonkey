@@ -22,6 +22,7 @@ import {
 import Modal from "./Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { motion } from "framer-motion";
 
 type Props = {};
 
@@ -78,16 +79,24 @@ const Signin = (props: Props) => {
   const [modal, showModal] = useState(false);
 
   return (
-    <div className="w-full h-full  flex">
-      <div className="w-full  bg-gradient-to-r from-orange-300 to-yellow-200 ">
+    <div className="w-full h-full  flex overflow-hidden">
+      <motion.div
+        initial={{ y: -3000 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full  bg-gradient-to-r from-orange-300 to-yellow-200 "
+      >
         <div className="flex justify-center items-center h-full">
           Image Here
         </div>
-      </div>
-      <div className="w-full flex flex-col  space-y-5 justify-center items-center">
+      </motion.div>
+      <motion.div
+        initial={{ y: 3000 }}
+        animate={{ y: 0 }}
+        transition={{ duration: 1 }}
+        className="w-full flex flex-col  space-y-5 justify-center items-center"
+      >
         {modal ? (
-          <Modal />
-        ) : (
           <>
             <h1 className="flex text-6xl font-extrabold ">Register now</h1>
 
@@ -131,12 +140,14 @@ const Signin = (props: Props) => {
               Register now
             </Button>
           </>
+        ) : (
+          <Modal />
         )}
         <Button
           className="flex justify-end items-center"
           onClick={() => showModal(!modal)}
         >
-          Already have an account ?
+          Register now
         </Button>
         <span className="block w-1/2 border-t-2"></span>
         <Button
@@ -153,7 +164,7 @@ const Signin = (props: Props) => {
           <FacebookIcon />
           <p>Sign in with Facebook</p>
         </Button>
-      </div>
+      </motion.div>
 
       <div className="absolute left-2 bottom-2">
         <ToastContainer />
