@@ -23,6 +23,7 @@ import Modal from "./Modal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { motion } from "framer-motion";
+import Image from "next/image";
 
 type Props = {};
 
@@ -81,19 +82,21 @@ const Signin = (props: Props) => {
   return (
     <div className="w-full h-full  flex overflow-hidden">
       <motion.div
-        initial={{ y: -3000 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1 }}
+        initial={{ x: -3000, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 2 }}
         className="w-full  bg-gradient-to-r from-orange-300 to-yellow-200 "
       >
-        <div className="flex justify-center items-center h-full">
-          Image Here
-        </div>
+        <motion.div className="flex flex-col justify-center items-center h-full space-y-5">
+          <Image src={"/03.png"} height={400} width={400} />
+          <h1 className="text-6xl font-extrabold ">GoMonkey</h1>
+          <p>Best tool for your productivity</p>
+        </motion.div>
       </motion.div>
       <motion.div
-        initial={{ y: 3000 }}
-        animate={{ y: 0 }}
-        transition={{ duration: 1 }}
+        initial={{ x: 3000, opacity: 0 }}
+        animate={{ x: 0, opacity: 1 }}
+        transition={{ duration: 2 }}
         className="w-full flex flex-col  space-y-5 justify-center items-center"
       >
         {modal ? (
